@@ -1,26 +1,40 @@
 import React from 'react'
-import Records from './Products.json'
+import { useParams } from 'react-router-dom'
+import Records from './products.json'
 
-export const ProductDetails = () => {
+export default function ProductDetails() {
+  const id = useParams()
+  const currProduct = Records.products.find(records => records.id === parseInt(id.id))
+  
   return (
-    <div className='img_div'>
-      {Records.products.map(record => {
+    <>
 
-        return(
-          <div>
-           <img src= {record.thumbnail} height="300px" width="300px" alt={record.images.title} />
-           {record.title}
-            {record.description}
-            {record.price}
-            {record.discountPercentage}
-            {record.rating}
-            {record.stock}
-            {record.brand}
-            {record.category}
 
-          </div>
-        )
-      })}
-    </div>
+      <div className='img_div' key={currProduct.id}>
+        <img src={currProduct.images[0]} alt="img" />
+        <img src={currProduct.images[1]} alt="img" />
+        <img src={currProduct.images[2]} alt="img" />
+        Title: {currProduct.title}
+        <br />
+       Description : {currProduct.description}
+        <br />
+        Price : {currProduct.price}
+        <br />
+        Discount : {currProduct.discountPercentage}
+        <br />
+        Rating : {currProduct.rating}
+        <br />
+        Stock left : {currProduct.stock}
+        <br />
+        Brand : {currProduct.brand}
+        <br />
+        Category : {currProduct.category}
+
+
+
+      </div>
+
+
+    </>
   )
 }

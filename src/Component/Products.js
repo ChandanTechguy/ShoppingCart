@@ -1,19 +1,27 @@
 import React from 'react'
 import Records from './products.json'
+import { useNavigate } from 'react-router-dom';
+
+
 
 export default function Products() {
+  const navigate = useNavigate()
+
+
   return (
     <>
       {Records.products.map(records => {
         return (
-          <div className='img_div'>
-          <div className='purchase-card'>
-            <img src={records.thumbnail} alt={records.title} /> <strong>{records.title}</strong> <br />
-            <strong>Price :</strong> ${records.price} <br />
-            <strong>Discount : </strong>{records.discountPercentage} <br />
-            <strong>Rating : </strong>{records.rating}
-          </div>
-          </div>
+          <div key={records.id} className='img_div'>
+
+            <img onClick={() => { navigate(`/productDetails/${records.id}`) }} src={records.thumbnail} alt={records.title} />
+            {records.title}
+
+            <br />
+            Price: ${records.price} <br />
+            Discount: {records.discountPercentage} <br />
+            Rating : {records.rating}
+            </div>
         )
       })}
     </>

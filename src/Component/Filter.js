@@ -2,7 +2,7 @@ import React from 'react'
 export default function Filter() {
   return (
     <>
-    <h8><strong>Filter = </strong> </h8>
+    <h8><strong>Filter : </strong> </h8>
        <h8><strong>Select Brand : </strong></h8>
          <select style={{width:"200px",height:"30px", borderRadius:"10px"}}>
             <option  disabled selected>
