@@ -5,18 +5,16 @@ import Records from './products.json'
 export default function ProductDetails() {
   const id = useParams()
   const currProduct = Records.products.find(records => records.id === parseInt(id.id))
-  
+
   return (
     <>
-
-
       <div className='img_div' key={currProduct.id}>
         <img src={currProduct.images[0]} alt="img" />
         <img src={currProduct.images[1]} alt="img" />
         <img src={currProduct.images[2]} alt="img" />
         Title: {currProduct.title}
         <br />
-       Description : {currProduct.description}
+        Description : {currProduct.description}
         <br />
         Price : {currProduct.price}
         <br />
@@ -29,9 +27,6 @@ export default function ProductDetails() {
         Brand : {currProduct.brand}
         <br />
         Category : {currProduct.category}
-
-
-
       </div>
 
 

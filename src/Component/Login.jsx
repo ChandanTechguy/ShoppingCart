@@ -21,7 +21,8 @@ export const Loginform = () => {
 
     return (
         <div className="Chandan">
-            {/* <form className="form-container " onSubmit={handleSubmit}>
+
+            <form className="form-container border " onSubmit={handleSubmit}>
                 <ul
                     className="nav nav-pills nav-justified mb-3 "
                     id="ex1"
@@ -37,113 +38,79 @@ export const Loginform = () => {
                             aria-controls="pills-login"
                             aria-selected="true"
                         >
-                            Login
+                            <strong> Login</strong>
                         </a>
                     </li>
                 </ul>
-                <div className="tab-content">
-                    <div
-                        className="tab-pane fade show active"
-                        id="pills-login"
-                        role="tabpanel"
-                        aria-labelledby="tab-login"
-                    > */}
-                        <form className="form-container border " onSubmit={handleSubmit}>
-                        <ul
-                    className="nav nav-pills nav-justified mb-3 "
-                    id="ex1"
-                    role="tablist"
-                >
-                    <li className="nav-item" role="presentation">
-                        <a
-                            class="nav-link active"
-                            id="tab-login"
-                            data-mdb-toggle="pill"
-                            href="#pills-login"
-                            role="tab"
-                            aria-controls="pills-login"
-                            aria-selected="true"
-                        >
-                           <strong> Login</strong>
-                        </a>
-                    </li>
-                </ul>
-                            <div className="was-validated container container-sm ">
-                                <label className="form-label" htmlFor="loginName" id="Das"><strong> Email or Username</strong>
-                                   
-                                </label>
-                                <input
-                                    required
-                                    minLength={8}
-                                    type="email"
-                                    id="loginName"
-                                    className="form-control"
-                                    value={username}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Email"
-                                    
-                                />
+                <div className="was-validated container container-sm ">
+                    <label className="form-label" htmlFor="loginName" id="Das"><strong> Email or Username</strong>
 
-                                {/* {err.email && (<div>
-                                        <p class ="danger">{err.email}</p>
-                            </div>)
-                                } */}
-                            </div>
-                            <br></br>
+                    </label>
+                    <input
+                        required
+                        minLength={8}
+                        type="email"
+                        id="loginName"
+                        className="form-control"
+                        value={username}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
 
-                            <div className="was-validated container container-sm ">
-                                <label className="form-label" htmlFor="loginPassword" id="Text"><strong>Password</strong>
-                                  
-                                </label>
-                                <input
-                                    type="password"
-                                    id="loginPassword"
-                                    className="form-control"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Password"
-                                    required
-                                />
-                            </div>
-                            <br></br>
+                    />
+                </div>
+                <br></br>
 
-                            <div className="row mb-4">
-                                <div className="col-md-6 d-flex justify-content-center">
-                                    <div className="form-check mb-3 mb-md-0">
-                                        <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            value=""
-                                            id="loginCheck"
-                                            checked
-                                        />
-                                        <label
-                                            className="form-check-label"
-                                            id="cha"
-                                            htmlFor="loginCheck"
-                                        >
-                                            {" "}
-                                            Remember me{" "}
-                                        </label>
-                                    </div>
-                                </div>
+                <div className="was-validated container container-sm ">
+                    <label className="form-label" htmlFor="loginPassword" id="Text"><strong>Password</strong>
 
-                                <div className="col-md-6 d-flex justify-content-center">
-                                    <a href="#!" id="pass"><strong>Forgot password ?</strong>
-                                        
-                                    </a>
-                                </div>
-                            </div>
+                    </label>
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        className="form-control"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        required
+                    />
+                </div>
+                <br></br>
 
-                            <button
-                                className="btn btn-primary btn-block mb-4 container"
+                <div className="row mb-4">
+                    <div className="col-md-6 d-flex justify-content-center">
+                        <div className="form-check mb-3 mb-md-0">
+                            <input
+                                className="form-check-input"
+                                type="checkbox"
+                                value=""
+                                id="loginCheck"
+                                checked
+                            />
+                            <label
+                                className="form-check-label"
+                                id="cha"
+                                htmlFor="loginCheck"
                             >
-                                <strong>Sign in</strong>
-                            </button>
-                        </form>
+                                {" "}
+                                Remember me{" "}
+                            </label>
+                        </div>
                     </div>
-            //     </div>
-            // </form>
-        // </div>
+
+                    <div className="col-md-6 d-flex justify-content-center">
+                        <a href="#!" id="pass"><strong>Forgot password ?</strong>
+
+                        </a>
+                    </div>
+                </div>
+
+                <button
+                    className="btn btn-primary btn-block mb-7 container"
+                >
+                    <strong>Sign in</strong>
+                </button>
+            </form>
+        </div>
+
     );
 };
