@@ -82,17 +82,19 @@ export default function Filter() {
          <button onClick={sortByPrice}>Price </button>
          <button onClick={sortByDiscount}>Discount</button>
          <button onClick={sortByRating}>Rating</button>
-         {data.map(rec => {
+          {data.map(rec => {
             return (
                <div key={data.id}>
                   <img onClick={() => { navigate(`/productDetails/${rec.id}`) }} src={rec.thumbnail} alt={rec.title} />
                   <br />
-                  {rec.title}
+                  <strong>{rec.title}</strong>
 
                   <br />
-                  Price: ${rec.price} <br />
-                  Discount: {rec.discountPercentage} <br />
-                  Rating : {rec.rating}
+                  <strong>Price:</strong> ${rec.price} <br />
+                  <strong>Discount:</strong> {rec.discountPercentage} <br />
+                  <strong>Rating :</strong> {rec.rating}
+                  <br></br>
+                  <button onClick={() => dispatch({type:"ADD" , payload: rec})}>Add To Cart</button>
                </div>
             )
          })}
@@ -101,6 +103,7 @@ export default function Filter() {
    )
 
 }
+
 
 
 
