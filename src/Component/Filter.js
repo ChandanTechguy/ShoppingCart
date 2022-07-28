@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Records from './products.json'
 import { useNavigate } from 'react-router-dom';
+// import {useDispatch} from 'react-router-dom'
 
 export default function Filter() {
+   // const dispatch = useDispatch()
    const navigate = useNavigate()
    const record = Records.products
    const [data, setData] = useState(record)
@@ -41,14 +43,14 @@ export default function Filter() {
    const sortByDiscount = () => {
       setData((record) => {
          const dataToSort = [...data]
-         dataToSort.sort((a, b) => Number(a.discountPercentage) - Number(b.discountPercentage))
+         dataToSort.sort((a, b) => Number(b.discountPercentage) - Number(a.discountPercentage))
          return dataToSort
       })
    }
    const sortByRating = () => {
       setData((record) => {
          const dataToSort = [...data]
-         dataToSort.sort((a, b) => Number(a.rating) - Number(b.rating))
+         dataToSort.sort((a, b) => Number(b.rating) - Number(a.rating))
          return dataToSort
       })
    }
@@ -94,7 +96,7 @@ export default function Filter() {
                   <strong>Discount:</strong> {rec.discountPercentage} <br />
                   <strong>Rating :</strong> {rec.rating}
                   <br></br>
-                  <button onClick={() => dispatch({type:"ADD" , payload: rec})}>Add To Cart</button>
+                  <button onClick={() =>({type:"ADD" , payload: rec})}>Add To Cart</button>
                </div>
             )
          })}
@@ -103,7 +105,6 @@ export default function Filter() {
    )
 
 }
-
 
 
 
