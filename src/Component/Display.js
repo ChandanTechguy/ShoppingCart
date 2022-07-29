@@ -40,7 +40,7 @@ const Product = ({ values, handleProduct }) => {
           <h5 className="card-title">{values.brand}</h5>
           <p className="card-text">Price: {values.price} /-</p>
 
-          <p className="card-text">Ratings ⭐ {values.rating}</p>
+          <p className="card-text">Ratings :⭐ {values.rating}</p>
           <p> {values.description}</p>
           
         </div>

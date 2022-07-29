@@ -12,7 +12,7 @@ const Form = () => {
     <div className="form-container">
         <nav className="navbar navbar-light bg-light">
         <a className="navbar-brand " href="/">
-          ShopHere
+          Lets Shopping !!
         </a>
         </nav>
         <div className="form-input">

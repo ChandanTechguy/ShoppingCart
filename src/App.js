@@ -1,12 +1,11 @@
 import './App.css';
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Products from './Component/Products';
 import Loginform from './Component/Login.jsx';
 import { useState } from 'react';
 import MyCart from './Component/MyCart';
 import Form from './Component/Form';
-import OrderPlace from './Component/OrderPlace';
+//import OrderPlace from './Component/OrderPlace';
 import NewProduc from './Component/Display';
 // import Navbar from './Components/Navbar';
 
@@ -45,7 +44,7 @@ function App() {
       <Route path="/product" element={<Products onAdd={onAdd} cartItems ={cartItems}/>} ></Route>
       <Route path="/cart" element={<MyCart cartItems ={cartItems} total={total}/>} ></Route>
       <Route path="/placeOrder" element={<Form/>} ></Route>
-      <Route path="/placed" element={<OrderPlace cartItems ={cartItems} total={total}/>} ></Route>
+      {/* <Route path="/placed" element={<OrderPlace cartItems ={cartItems} total={total}/>} ></Route> */}
       <Route path="/addProduct" element={<NewProduc/>} ></Route>
       
       

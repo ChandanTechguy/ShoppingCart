@@ -9,8 +9,6 @@
 //    const itemsord = Items.products
 //    const [data, setData] = useState(itemsord)
 
-
-
 //    function filterData(ele1) {
 //       const filter = itemsord.filter((ele) => {
 //         // console.log(ele.brand, "matches with", ele1.target.value)
@@ -19,7 +17,6 @@
 //          }
 //       })
 //       setData(filter)
-
 
 //    }
 //    function filterdData(ele1) {
@@ -31,7 +28,6 @@
 //       })
 //       setData(filter)
 //    }
-
 
 //    const sortByPrice = () => {
 //       setData((itemsord) => {
@@ -69,7 +65,6 @@
 //             )}
 //          </select>
 
-
 //          <h8> <strong>Category :</strong></h8>
 //          <select onChange={filterdData}id="selectBox" style={{ width: "200px", height: "30px", borderRadius: "20px" }}>
 //             <option disabled selected>
@@ -106,415 +101,411 @@
 
 // }
 
+import React from "react";
+import Items from "../Data/Items";
+import { useState } from "react";
+import Navbar from "./Navbar";
+import Product from "./Products";
+import Dropdown from "react-bootstrap/Dropdown";
 
-// import React from "react";
-// import Items from "../Data/Items";
-// import { useState } from "react";
-// import Navbar from "./Navbar";
-// import Product from "./Products";
-// import Dropdown from "react-bootstrap/Dropdown";
+const Products = ({ onAdd, cartItems }) => {
+  const [selected, setSelected] = useState(null);
+  const [data, setData] = useState(Items);
+  // const [cart, setCart] = useState([]);
 
-// const Products = ({ onAdd, cartItems }) => {
-//    const [selected, setSelected] = useState(null);
-//    const [data, setData] = useState(Items);
-//    // const [cart, setCart] = useState([]);
+  const handleProduct = (value) => {
+    setSelected(value);
+  };
 
+  const filterResult = (catItem) => {
+    const result = Items.filter((currData) => {
+      return currData.category === catItem;
+    });
+    setData(result);
+  };
+  const handlePrice = () => {
+    const numPrice = [...data].sort((a, b) => a.price - b.price);
+    setData(numPrice);
+  };
 
-//    const handleProduct = (value) => {
-//       setSelected(value);
-//    };
+  const handleRating = () => {
+    const numRating = [...data].sort((c, d) => c.rating - d.rating);
+    setData(numRating);
+  };
 
-//    const filterResult = (catItem) => {
-//       const result = Items.filter((currData) => {
-//          return currData.category === catItem;
-//       });
-//       setData(result);
-//    };
-//    const handlePrice = () => {
-//       const numPrice = [...data].sort((a, b) => a.price - b.price);
-//       setData(numPrice);
-//    };
+  const handleDiscount = () => {
+    const numDiscount = [...data].sort(
+      (a, b) => a.discountPercentage - b.discountPercentage
+    );
+    setData(numDiscount);
+  };
 
-//    const handleRating = () => {
-//       const numRating = [...data].sort((c, d) => c.rating - d.rating);
-//       setData(numRating);
-//    };
+  if (selected !== null) {
+    return <Product values={selected} handleProduct={handleProduct} />;
+  }
 
-//    const handleDiscount = () => {
-//       const numDiscount = [...data].sort(
-//          (a, b) => a.discountPercentage - b.discountPercentage
-//       );
-//       setData(numDiscount);
-//    };
+  return (
+    <>
+      <Navbar onAdd={onAdd} cartItems={cartItems} />
 
-//    if (selected !== null) {
-//       return <Product values={selected} handleProduct={handleProduct} />;
-//    }
+      <div className="container">
+        <div className="row mt-5 mx-2">
+          <div className="col-md-3">
+            <Dropdown>
+              <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                Filter
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("smartphones")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Smartphones
+                  </label>{" "}
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("laptops")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Laptops
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("fragrances")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Fragrances
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("skincare")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Skincare
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("groceries")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Groceries
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("home-decoration")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Home Decoration
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("furniture")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Furniture
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("tops")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Tops
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("womens-dresses")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Women-dresses
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("womens-shoes")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Women-shoes
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("mens-shirts")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Men's Shirts
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("mens-shoes")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Men's Shoes
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("mens-watches")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Men's Watches
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("womens-watches")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Womens-watches
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("womens-jewellery")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Womens-jewellery
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("womens-bags")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Womens Bags
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("motorcycle")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Motorcycle
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("automotive")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Automotive
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("sunglasses")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Sunglasses
+                  </label>
+                  <br />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={() => filterResult("lighting")}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    Lighting
+                  </label>
+                  <br />
+                </div>
+              </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Sort
+              </Dropdown.Toggle>
 
-//    return (
-//       <>
-//          <Navbar onAdd={onAdd} cartItems={cartItems} />
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={handlePrice}>Price</Dropdown.Item>
+                <Dropdown.Item onClick={handleRating}>Rating</Dropdown.Item>
+                <Dropdown.Item onClick={handleDiscount}>
+                  Discount Percentage
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+          <div className="col-md-9">
+            <div className="row">
+              {data.map((values) => {
+                return (
+                  <>
+                    <div className="col-md-4 mb-4">
+                      <div className="card" key={values.id}>
+                        <img
+                          src={values.images[0]}
+                          className="card-img-top"
+                          alt="..."
+                        />
+                        <div className="card-body">
+                          <h5 className="card-title">{values.brand}</h5>
+                          <p className="card-text">Price: {values.price} /-</p>
+                          <p className="card-text">
+                            Discount: {values.discountPercentage}%
+                          </p>
 
-//          <div className="container-fluid mx-2">
+                          <p className="card-text">
+                            Ratings ⭐ {values.rating}
+                          </p>
 
-//             <div className="row mt-5 mx-2">
+                          <button
+                            className="btn btn-dark"
+                            onClick={() => setSelected(values)}
+                          >
+                            View Product Details
+                          </button>
 
-//                <div className="col-md-3">
-//                   <Dropdown>
-//                      <Dropdown.Toggle variant="primary" id="dropdown-basic">
-//                         Filter
-//                      </Dropdown.Toggle>
-//                      <Dropdown.Menu>
-//                         <div className="form-check">
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("smartphones")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Smartphones
-//                            </label>{" "}
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("laptops")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Laptops
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("fragrances")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Fragrances
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("skincare")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Skincare
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("groceries")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Groceries
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("home-decoration")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Home Decoration
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("furniture")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Furniture
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("tops")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Tops
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("womens-dresses")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Women-dresses
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("womens-shoes")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Women-shoes
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("mens-shirts")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Men's Shirts
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("mens-shoes")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Men's Shoes
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("mens-watches")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Men's Watches
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("womens-watches")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Womens-watches
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("womens-jewellery")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Womens-jewellery
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("womens-bags")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Womens Bags
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("motorcycle")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Motorcycle
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("automotive")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Automotive
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("sunglasses")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Sunglasses
-//                            </label>
-//                            <br />
-//                            <input
-//                               className="form-check-input"
-//                               type="checkbox"
-//                               value=""
-//                               id="flexCheckDefault"
-//                               onClick={() => filterResult("lighting")}
-//                            />
-//                            <label
-//                               className="form-check-label"
-//                               htmlFor="flexCheckDefault"
-//                            >
-//                               Lighting
-//                            </label>
-//                            <br />
-//                         </div>
-//                      </Dropdown.Menu>
-//                   </Dropdown>
-//                   <Dropdown>
-//                      <Dropdown.Toggle variant="success" id="dropdown-basic">
-//                         Sort
-//                      </Dropdown.Toggle>
+                          <button
+                            type="button"
+                            className="btn btn-outline-secondary"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              onAdd(values);
+                            }}
+                          >
+                            Add to Cart
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-//                      <Dropdown.Menu>
-//                         <Dropdown.Item onClick={handlePrice}>Price</Dropdown.Item>
-//                         <Dropdown.Item onClick={handleRating}>Rating</Dropdown.Item>
-//                         <Dropdown.Item onClick={handleDiscount}>
-//                            Discount Percentage
-//                         </Dropdown.Item>
-//                      </Dropdown.Menu>
-//                   </Dropdown>
-//                </div>
-//                <div className="col-md-9">
-//                   <div className="row">
-//                      {data.map((values) => {
-//                         return (
-//                            <>
-//                               <div className="col-md-4 mb-4" >
-//                                  <div className="card" key={values.id}>
-//                                     <img
-//                                        src={values.images[0]}
-//                                        className="card-img-top"
-//                                        alt="..."
-//                                     />
-//                                     <div className="card-body">
-//                                        <h5 className="card-title">{values.brand}</h5>
-//                                        <p className="card-text">Price: {values.price} /-</p>
-//                                        <p className="card-text">
-//                                           Discount: {values.discountPercentage}%
-//                                        </p>
-
-//                                        <p className="card-text">
-//                                           Ratings ⭐ {values.rating}
-//                                        </p>
-
-//                                        <button
-//                                           className="btn btn-dark"
-//                                           onClick={() => setSelected(values)}
-//                                        >
-//                                           View Product Details
-//                                        </button>
-
-//                                        <button type="button" className="btn btn-outline-secondary" onClick={(e) => {
-//                                           e.preventDefault()
-//                                           onAdd(values)
-//                                        }}>Add to Cart</button>
-
-//                                     </div>
-//                                  </div>
-//                               </div>
-//                            </>
-//                         );
-//                      })}
-//                   </div>
-//                </div>
-//             </div>
-//          </div>
-//       </>
-//    );
-// };
-
-// export default Products
-
-
-
-
-
+export default Products;
