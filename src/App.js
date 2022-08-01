@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Products from "./Component/Products";
-import Loginform from "./Component/Login.jsx";
+import {Loginform} from "./Component/Login.jsx";
 import { useState } from "react";
 import MyCart from "./Component/MyCart";
 import Form from "./Component/Form";
