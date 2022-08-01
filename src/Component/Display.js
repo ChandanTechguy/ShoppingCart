@@ -1,9 +1,8 @@
 import React from "react";
 import Carousel from 'react-bootstrap/Carousel';
-const Product = ({ values, handleProduct }) => {
 
-  
-  return (
+const Product = ({ values, handleProduct }) => {
+ return (
     <>
     <nav className="navbar navbar-light bg-light">
         <a className="navbar-brand " href="/">

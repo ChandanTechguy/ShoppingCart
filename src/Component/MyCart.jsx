@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom'
 const MyCart = ({ cartItems, total }) => {
   const history = useNavigate()
 
-  // const handleOrder = () => {
-  //   history('/placeOrder')
-  // }
+  const handleOrder = () => {
+    history('/placeOrder')
+  }
   const handleClick = () => {
     history('/product')
   }
@@ -17,11 +17,11 @@ const MyCart = ({ cartItems, total }) => {
         <div className="cart-container">
           <nav className="navbar navbar-light bg-light">
             <a className="navbar-brand " href="/">
-              ShopHere
+              LETS SHOPPING !!
             </a>
           </nav>
           <h3 className='cart-display'>No items to Display</h3>
-          <button type="button" className="btn btn-outline-warning" onClick={handleClick}>Go Back to products page</button>
+          <button type="button" className="btn btn-outline-warning" onClick={handleClick}> Back to products page</button>
         </div>
       </>
     )
@@ -75,7 +75,7 @@ const MyCart = ({ cartItems, total }) => {
 
         </div>
         <button type="button" className="btn btn-outline-warning" onClick={handleClick}>Go Back to products page</button>
-        {/* <button type="button" className="btn btn-outline-info" onClick={handleOrder}>Checkout</button> */}
+        <button type="button" className="btn btn-outline-info" onClick={handleOrder}>Checkout</button>
       </div>
 
 

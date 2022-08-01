@@ -63,3 +63,6 @@
   font-size:10px;
   background-repeat:no-repeat; 
 } */
+.btn btn-outline-secondary{
+  background-color: blue;
+}

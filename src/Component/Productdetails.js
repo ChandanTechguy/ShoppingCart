@@ -4,7 +4,7 @@ import Records from './products.json'
 
 export default function ProductDetails() {
     const id = useParams()
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
   
     const currProduct = Records.products.find(records=>records.id === parseInt(id.id))
     const [cart, setCart] = useState([])

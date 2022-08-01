@@ -1,106 +1,3 @@
-// import React, { useState } from 'react'
-// import Items from "../Data/Items";
-// import { useNavigate } from 'react-router-dom';
-// // import {useDispatch} from 'react-router-dom'
-
-// export default function Filter() {
-//    // const dispatch = useDispatch()
-//    const navigate = useNavigate()
-//    const itemsord = Items.products
-//    const [data, setData] = useState(itemsord)
-
-//    function filterData(ele1) {
-//       const filter = itemsord.filter((ele) => {
-//         // console.log(ele.brand, "matches with", ele1.target.value)
-//          if (ele.brand === ele1.target.value) {
-//             return ele;
-//          }
-//       })
-//       setData(filter)
-
-//    }
-//    function filterdData(ele1) {
-//       const filter = itemsord.filter((ele) => {
-//         // console.log(ele.category, "matches with", ele1.target.value)
-//          if (ele.category === ele1.target.value) {
-//             return ele;
-//          }
-//       })
-//       setData(filter)
-//    }
-
-//    const sortByPrice = () => {
-//       setData((itemsord) => {
-//          const dataToSort = [...data]
-//          dataToSort.sort((a, b) => Number(a.price) - Number(b.price))
-//          return dataToSort
-//       })
-//    }
-//    const sortByDiscount = () => {
-//       setData((itemsord) => {
-//          const dataToSort = [...data]
-//          dataToSort.sort((a, b) => Number(b.discountPercentage) - Number(a.discountPercentage))
-//          return dataToSort
-//       })
-//    }
-//    const sortByRating = () => {
-//       setData((itemsord) => {
-//          const dataToSort = [...data]
-//          dataToSort.sort((a, b) => Number(b.rating) - Number(a.rating))
-//          return dataToSort
-//       })
-//    }
-
-//    return (
-//       <>
-//          <h6><strong>Sort By ~ </strong></h6>
-//          <h8><strong>Select Brand :</strong></h8>
-
-//          <select onChange={filterData} id="selectBox" style={{ width: "200px", height: "30px", borderRadius: "20px" }}>
-//             <option disabled selected>
-//                select
-//             </option>
-//             {itemsord.map(ele =>
-//                <option value={ele.brand} className='btn btn-primary'  >{ele.brand}</option>
-//             )}
-//          </select>
-
-//          <h8> <strong>Category :</strong></h8>
-//          <select onChange={filterdData}id="selectBox" style={{ width: "200px", height: "30px", borderRadius: "20px" }}>
-//             <option disabled selected>
-//                select
-//             </option>
-//             {itemsord.map(ele =>
-//                <option value={ele.category} className='btn btn-primary'>{ele.category}</option>
-//             )}
-
-//          </select>
-
-//          <button onClick={sortByPrice}>Price </button>
-//          <button onClick={sortByDiscount}>Discount</button>
-//          <button onClick={sortByRating}>Rating</button>
-//           {data.map(items => {
-//             return (
-//                <div key={data.id}>
-//                   <img onClick={() => { navigate(`/productDetails/${items.id}`) }} src={items.thumbnail} alt={items.title} />
-//                   <br />
-//                   <strong>{items.title}</strong>
-
-//                   <br />
-//                   <strong>Price:</strong> ${items.price} <br />
-//                   <strong>Discount:</strong> {items.discountPercentage} <br />
-//                   <strong>Rating :</strong> {items.rating}
-//                   <br></br>
-//                   <button onClick={() =>({type:"ADD" , payload: items})}>Add To Cart</button>
-//                </div>
-//             )
-//          })}
-
-//       </>
-//    )
-
-// }
-
 import React from "react";
 import Items from "../Data/Items";
 import { useState } from "react";
@@ -111,7 +8,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 const Products = ({ onAdd, cartItems }) => {
   const [selected, setSelected] = useState(null);
   const [data, setData] = useState(Items);
-  // const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]);
 
   const handleProduct = (value) => {
     setSelected(value);
@@ -295,10 +192,10 @@ const Products = ({ onAdd, cartItems }) => {
                     htmlFor="flexCheckDefault"
                   >
                     Women-shoes
-                  </label>
-                  <br />
-                  <input
-                    className="form-check-input"
+                  </label> 
+                  <br /> 
+                  <input 
+                    className="form-check-input" 
                     type="checkbox"
                     value=""
                     id="flexCheckDefault"
