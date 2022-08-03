@@ -1,95 +1,108 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import {Loginform} from "./Component/Login"
+import React from 'react'
+
+// import {rest} from 'msw'
+
+// import {setupServer} from 'msw/node'
+
+import {render, fireEvent, waitFor, screen} from '@testing-library/react'
+
+import '@testing-library/jest-dom'
+
+import {Loginform} from './Component/Login'
+
+
 
 const mockedUsedNavigate = jest.fn();
 
-jest.mock('react-router-dom', () => ({
-    ...jest.requireActual('react-router-dom'),
-   useNavigate: () => mockedUsedNavigate,
- }));
 
 
-// 1
+jest.mock("react-router-dom", () => ({
+
+  ...jest.requireActual("react-router-dom"),
+
+  useNavigate: () => mockedUsedNavigate,
+
+}));
+
+// 1 login
 
 test("renders Login page", () => {
-  render(<Loginform />);
-    // screen.debug();
+
+  render(<Loginform/>);
+
+    screen.debug();
+
   const email = screen.getByPlaceholderText("Email");
+
   expect(email).toBeInTheDocument(); // jest
+
 });
 
-// 2
+// 2 email
 
 test("should accept email value", () => {
+
   render(<Loginform />);
+
   const element = screen.getByPlaceholderText("Email");
+
   fireEvent.change(element, { target: { value: "test@gmail.com" } });
-  screen.debug();
+
   expect(element.value).toBe("test@gmail.com");
+
 });
 
-// 3 Context
+// 3 password
 
-test("should display errors", () => {
-  render(
-    <ShopCartContext>
-      <Loginform />
-    </ShopCartContext>
-  );
-  const element = screen.getByRole("button");
+test("should accept password value", () => {
 
-  fireEvent.click(element);
-//   screen.debug();
+  render(<Loginform />);
 
-// userEvent.click(element)
-  const err = screen.getAllByText("Cannot be empty");
-// console.log(err, "::error")
-  expect(err[0]).toHaveClass("error");
-  expect(err[1]).toHaveClass("error");
-  expect(err.length).toBe(2);
-});
+  const element = screen.getByPlaceholderText("Password");
 
-// 4 With one error
+  fireEvent.change(element, { target: { value: "Chandan@2022" } });
 
-// test("should display 1 error", () => {
-//   render(
-//     <ShopCartContext>
-//       <Loginform />
-//     </ShopCartContext>
-//   );
+  expect(element.value).toBe("Chandan@2022");
 
-//   const element = screen.getByPlaceholderText("Email");
-//   fireEvent.change(element, { target: { value: "test@gmail.com" } });
-//   const button = screen.getByRole("button");
+})
 
-//   fireEvent.click(button);
-//   const err = screen.getAllByText("Cannot be empty");
-//   expect(err[0]).toHaveClass("error");
-//   expect(err.length).toBe(1);
-// });
+// 4 navigate
+
+test("Checking for navigate.", () => {
+
+  render(<Loginform />);
+
+  var email = screen.getByPlaceholderText("Email");
+
+  fireEvent.change(email,{target: {value: "chandan@gmail.com"}});
+
+  var password = screen.getByPlaceholderText("Password");
+
+  fireEvent.change(password, {target: {value:"Chandan@2022!"}});
 
 
-// 5 With no errors
 
-test("should display no errors", () => {
-  render(
-    <ShopCartContext>
-      <Loginform />
-    </ShopCartContext>
-    
-  );
+  var button = screen.getByRole("button");
 
-  const email = screen.getByPlaceholderText("Email");
-  fireEvent.change(email, { target: { value: "test@gmail.com" } });
-
-  const password = screen.getByPlaceholderText("Password");
-  fireEvent.change(password, { target: { value: "Test@123" } });
-  
-  const button = screen.getByRole("button");
   fireEvent.click(button);
 
- const err = screen.getByText("Cannot be empty");
-   expect(err[0]).toHaveClass("error");
-   expect(err.length).toBe(1);
+  expect(mockedUsedNavigate).toHaveBeenCalledWith("/products")
+
 });
 
+
+// 5 display password error
+
+// test("display password error", () => {
+
+//   render(<Loginform />);
+
+//   var element = screen.getByRole("button");
+
+//   fireEvent.click(element);
+
+//   const err = screen.getByText("Please enter a strong password");
+
+//   expect(err).toBeInTheDocument();
+
+// });

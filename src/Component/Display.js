@@ -12,15 +12,15 @@ const Product = ({ values, handleProduct }) => {
     <Carousel >
     <Carousel.Item>
       <img
-        className="d-block w-40"
+        className="container"
         src={values.images[0]}
-        alt="First slide"
+     alt="First slide"
       />
       
     </Carousel.Item>
     <Carousel.Item>
       <img
-        className="d-block w-40"
+        className="container"
         src={values.images[1]}
         alt="Second slide"
       />
@@ -28,7 +28,7 @@ const Product = ({ values, handleProduct }) => {
     </Carousel.Item>
     <Carousel.Item>
       <img
-        className="d-block w-40"
+        className="container"
         src={values.images[2]}
         alt="Third slide"
       />
