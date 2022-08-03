@@ -30,35 +30,35 @@ test("should accept email value", () => {
 
 // 3 Context
 
-// test("should display errors", () => {
-//   render(
-//     <ShopCartContext>
-//       <Login />
-//     </ShopCartContext>
-//   );
-//   const element = screen.getByRole("button");
+test("should display errors", () => {
+  render(
+    <ShopCartContext>
+      <Loginform />
+    </ShopCartContext>
+  );
+  const element = screen.getByRole("button");
 
-//   fireEvent.click(element);
-// //   screen.debug();
+  fireEvent.click(element);
+//   screen.debug();
 
-// // userEvent.click(element)
-//   const err = screen.getAllByText("Cannot be empty");
-// // console.log(err, "::error")
-//   expect(err[0]).toHaveClass("error");
-//   expect(err[1]).toHaveClass("error");
-//   expect(err.length).toBe(2);
-// });
+// userEvent.click(element)
+  const err = screen.getAllByText("Cannot be empty");
+// console.log(err, "::error")
+  expect(err[0]).toHaveClass("error");
+  expect(err[1]).toHaveClass("error");
+  expect(err.length).toBe(2);
+});
 
 // 4 With one error
 
 // test("should display 1 error", () => {
 //   render(
 //     <ShopCartContext>
-//       <Login />
+//       <Loginform />
 //     </ShopCartContext>
 //   );
 
-//   const element = screen.getByPlaceholderText("Email Id");
+//   const element = screen.getByPlaceholderText("Email");
 //   fireEvent.change(element, { target: { value: "test@gmail.com" } });
 //   const button = screen.getByRole("button");
 
@@ -71,24 +71,25 @@ test("should accept email value", () => {
 
 // 5 With no errors
 
-// test("should display no errors", () => {
-//   render(
-//     <ShopCartContext>
-//       <Login />
-//     </ShopCartContext>
-//   );
+test("should display no errors", () => {
+  render(
+    <ShopCartContext>
+      <Loginform />
+    </ShopCartContext>
+    
+  );
 
-//   const email = screen.getByPlaceholderText("Email Id");
-//   fireEvent.change(email, { target: { value: "test@gmail.com" } });
+  const email = screen.getByPlaceholderText("Email");
+  fireEvent.change(email, { target: { value: "test@gmail.com" } });
 
-//   const password = screen.getByPlaceholderText("Password");
-//   fireEvent.change(password, { target: { value: "Test@123" } });
+  const password = screen.getByPlaceholderText("Password");
+  fireEvent.change(password, { target: { value: "Test@123" } });
   
-//   const button = screen.getByRole("button");
-//   fireEvent.click(button);
+  const button = screen.getByRole("button");
+  fireEvent.click(button);
 
-// //   const err = screen.getByText("Cannot be empty");
-// //   expect(err[0]).toHaveClass("error");
-// //   expect(err.length).toBe(1);
-// });
+ const err = screen.getByText("Cannot be empty");
+   expect(err[0]).toHaveClass("error");
+   expect(err.length).toBe(1);
+});
 

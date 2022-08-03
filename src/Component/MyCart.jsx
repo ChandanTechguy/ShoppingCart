@@ -9,7 +9,7 @@ const MyCart = ({ cartItems, total }) => {
     history('/placeOrder')
   }
   const handleClick = () => {
-    history('/product')
+    history('/products')
   }
   if (cartItems.length === 0) {
     return (
@@ -20,8 +20,8 @@ const MyCart = ({ cartItems, total }) => {
               LETS SHOPPING !!
             </a>
           </nav>
-          <h3 className='cart-display'>No items to Display</h3>
-          <button type="button" className="btn btn-outline-warning" onClick={handleClick}> Back to products page</button>
+          <h3 className='cart-display'>No items to Display 😶‍🌫️</h3>
+          <button type="button" className="btn btn-outline-warning" onClick={handleClick}> Back to products page </button>
         </div>
       </>
     )
@@ -32,7 +32,7 @@ const MyCart = ({ cartItems, total }) => {
       <div className="cart-container">
         <nav className="navbar navbar-light bg-light">
           <a className="navbar-brand " href="/">
-            ShopHere
+            <h3><strong>My Cart !!</strong></h3>
           </a>
 
           <p>Total price: Rs.{total}/- </p>

@@ -2,15 +2,15 @@ import React from "react";
 import Items from "../Data/Items";
 import { useState } from "react";
 import Navbar from "./Navbar";
-import Product from "./Products";
 import Dropdown from "react-bootstrap/Dropdown";
+import Display from './Display'
 
-const Products = ({ onAdd, cartItems }) => {
+const Displays = ({ onAdd, cartItems }) => {
   const [selected, setSelected] = useState(null);
   const [data, setData] = useState(Items);
   const [cart, setCart] = useState([]);
 
-  const handleProduct = (value) => {
+  const handleDisplay = (value) => {
     setSelected(value);
   };
 
@@ -38,7 +38,7 @@ const Products = ({ onAdd, cartItems }) => {
   };
 
   if (selected !== null) {
-    return <Product values={selected} handleProduct={handleProduct} />;
+    return <Display values={selected} handleDisplay={handleDisplay} />;
   }
 
   return (
@@ -50,7 +50,7 @@ const Products = ({ onAdd, cartItems }) => {
           <div className="col-md-3">
             <Dropdown>
               <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                Filter
+                <strong>Filter</strong>
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <div className="form-check">
@@ -337,9 +337,10 @@ const Products = ({ onAdd, cartItems }) => {
                 </div>
               </Dropdown.Menu>
             </Dropdown>
+            <br></br>
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Sort
+                <strong>Sort</strong>
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
@@ -364,21 +365,21 @@ const Products = ({ onAdd, cartItems }) => {
                           alt="..."
                         />
                         <div className="card-body">
-                          <h5 className="card-title">{values.brand}</h5>
-                          <p className="card-text">Price: {values.price} /-</p>
+                          <h4 className="card-title"><strong>{values.brand}</strong></h4>
+                          <p className="card-text"><strong>Price: </strong>{values.price} /-</p>
                           <p className="card-text">
-                            Discount: {values.discountPercentage}%
+                            <strong>Discount: </strong>{values.discountPercentage}%
                           </p>
 
                           <p className="card-text">
-                            Ratings ⭐ {values.rating}
+                            <strong>Ratings ⭐ </strong>{values.rating}
                           </p>
 
                           <button
                             className="btn btn-dark"
                             onClick={() => setSelected(values)}
                           >
-                            View Product Details
+                            <strong>Product Details</strong>
                           </button>
 
                           <button
@@ -389,7 +390,7 @@ const Products = ({ onAdd, cartItems }) => {
                               onAdd(values);
                             }}
                           >
-                            Add to Cart
+                            <strong>Add to Cart</strong>
                           </button>
                         </div>
                       </div>
@@ -405,4 +406,4 @@ const Products = ({ onAdd, cartItems }) => {
   );
 };
 
-export default Products;
+export default Displays;

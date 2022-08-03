@@ -6,7 +6,7 @@ const Product = ({ values, handleProduct }) => {
     <>
     <nav className="navbar navbar-light bg-light">
         <a className="navbar-brand " href="/">
-          ShopHere
+          <strong>More Info ...</strong>
         </a>
 </nav>
     <Carousel >
@@ -36,11 +36,11 @@ const Product = ({ values, handleProduct }) => {
     </Carousel.Item>
   </Carousel>
         <div className="card-body">
-          <h5 className="card-title">{values.brand}</h5>
-          <p className="card-text">Price: {values.price} /-</p>
+          <h5 className="card-title"><strong>{values.brand}</strong></h5>
+          <p className="card-text"><strong>Price:</strong> {values.price} /-</p>
 
-          <p className="card-text">Ratings :⭐ {values.rating}</p>
-          <p> {values.description}</p>
+          <p className="card-text"><strong>Ratings :</strong>⭐ {values.rating}</p>
+          <p> <strong>[ {values.description} ]</strong></p>
           
         </div>
         

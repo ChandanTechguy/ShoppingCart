@@ -53,16 +53,13 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 2em;
 }
-/* .form-container {
-  background-image: 
-  url(
-"https://unsplash.com/s/photos/online-shopping");
-  background-size: "cover";
-  height: 100vh;
-  margin-top: 100px;
-  font-size:10px;
-  background-repeat:no-repeat; 
-} */
-.btn btn-outline-secondary{
-  background-color: blue;
+
+.container{
+  background-color: rgba(0, 12, 8, 0.932);
 }
+.btn btn-dark{
+  background-color: rgb(95, 56, 236);
+}
+/* .btn btn-outline-warning{
+  background-color :brown
+} */

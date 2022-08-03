@@ -1,19 +1,19 @@
 import React, {useState} from 'react'
 import { useParams } from 'react-router-dom'
-import Records from './products.json'
+import Records from '../Data/Items'
 
 export default function ProductDetails() {
     const id = useParams()
-    const navigate = useNavigate()
+   //const navigate = useNavigate()
   
-    const currProduct = Records.products.find(records=>records.id === parseInt(id.id))
+    const values = Records.products.find(Records=>Records.id === parseInt(id.id))
     const [cart, setCart] = useState([])
     //console.log("This is ",id.id)
     const AddToCart = ()=>{
       const allProducts=JSON.parse(localStorage.getItem('object') || "")
       const object = {
-        img: currProduct.thumbnail,
-        price: currProduct.price
+        img: values.thumbnail,
+        price: values.price
       }
       allProducts.push(object)
       setCart([...cart,localStorage.setItem("object", JSON.stringify(allProducts))])
@@ -24,31 +24,31 @@ export default function ProductDetails() {
 
   return (
     <>
-    <div className='img_div' key={currProduct.id}>
+    <div className='img_div' key={values.id}>
           <div className='details'>
-          <img src={currProduct.images[0]} alt="img"/>
-            <img src={currProduct.images[1]} alt="img"/>
-            <img src={currProduct.images[2]} alt="img"/>
+          <img src={values.images[0]} alt="img"/>
+            <img src={values.images[1]} alt="img"/>
+            <img src={values.images[2]} alt="img"/>
           </div>
             <div style={{justifyContent:"center", paddingTop:"400px"}} className='title'>
-            Title: {currProduct.title}
+            Title: {values.title}
            <br/>
-            Description: {currProduct.description}
+            Description: {values.description}
             <br/>
-            Price: {currProduct.price}
+            Price: {values.price}
             <br/>
-            Discount: {currProduct.discountPercentage}
+            Discount: {values.discountPercentage}
             <br/>
-            Rating: {currProduct.rating}
+            Rating: {values.rating}
             <br/>
-            Stock left: {currProduct.stock}
+            Stock left: {values.stock}
             <br/>
-            Brand: {currProduct.brand}
+            Brand: {values.brand}
             <br/>
-            Category: {currProduct.category}
+            Category: {values.category}
            
             </div>
-            <div key={currProduct.id}>
+            <div key={values.id}>
 
             <button onClick={AddToCart}>Add to cart</button>
             </div>
