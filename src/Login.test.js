@@ -93,16 +93,16 @@ test("Checking for navigate.", () => {
 
 // 5 display password error
 
-// test("display password error", () => {
+ test("display password error", () => {
 
-//   render(<Loginform />);
+   render(<Loginform />);
 
-//   var element = screen.getByRole("button");
+   var element = screen.getByRole("button");
 
-//   fireEvent.click(element);
+  fireEvent.click(element);
 
-//   const err = screen.getByText("Forgot password ?");
+   const err = screen.getByText("Forgot password ?");
 
-//   expect(err).toBeInTheDocument();
+   expect(err).toBeInTheDocument();
 
-// });
+ });
