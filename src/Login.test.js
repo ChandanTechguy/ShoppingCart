@@ -101,7 +101,7 @@ test("Checking for navigate.", () => {
 
 //   fireEvent.click(element);
 
-//   const err = screen.getByText("Please enter a strong password");
+//   const err = screen.getByText("Forgot password ?");
 
 //   expect(err).toBeInTheDocument();
 
