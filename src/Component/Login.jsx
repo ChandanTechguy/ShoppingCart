@@ -30,7 +30,7 @@ export const Loginform = () => {
                 >
                     <li className="nav-item" role="presentation">
                         <a
-                            class="nav-link active"
+                            className="nav-link active"
                             id="tab-login"
                             data-mdb-toggle="pill"
                             href="#pills-login"

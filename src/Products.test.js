@@ -1,20 +1,9 @@
 import {
-  screen,
-  render as rtlRender,
-  fireEvent,
-  waitForElementToBeRemoved,
-} from "@testing-library/react";
-
-import ProductDetails from "./Products";
-
+  screen,render as rtlRender,fireEvent,} from "@testing-library/react";
+import {Displays} from "./Products";
 import React from "react";
-
 import { Provider } from "react-redux";
-
 import { configureStore } from "@reduxjs/toolkit";
-
-import Reducers from "./Reducers";
-
 import axios from "axios";
 
 const mockEvent = jest.fn();
@@ -29,8 +18,7 @@ jest.mock("axios");
 
 const render = (
   ui,
-
-  {
+{
     store = configureStore({
       reducer: Reducers,
     }),
@@ -105,10 +93,8 @@ test("renders page with redux", async () => {
   axios.get.mockImplementationOnce(() =>
     Promise.resolve({ data: { products } })
   );
-  render(<ProductDetails />);
-  const makeCustomWait = () => {
-    return waitForElementToBeRemoved(() => screen.queryByAltText("loading"));
-  };
+  render(<Displays />);
+
   await makeCustomWait();
   screen.debug();
   const title = screen.getByPlaceholderText("Enter Title");

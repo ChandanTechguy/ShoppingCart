@@ -1,9 +1,18 @@
 import React from 'react'
+
+
+
 import {render, fireEvent, waitFor, screen} from '@testing-library/react'
+
 import '@testing-library/jest-dom'
+
 import {Loginform} from './Component/Login'
 
+
+
 const mockedUsedNavigate = jest.fn();
+
+
 
 jest.mock("react-router-dom", () => ({
 
@@ -41,7 +50,7 @@ test("should accept email value", () => {
 
 });
 
-// 3 password
+// // 3 password
 
 test("should accept password value", () => {
 
@@ -55,7 +64,7 @@ test("should accept password value", () => {
 
 })
 
-// 4 navigate
+// // 4 navigate
 
 test("Checking for navigate.", () => {
 
@@ -80,18 +89,18 @@ test("Checking for navigate.", () => {
 });
 
 
-// 5 display password error
+// // 5 display password error
 
-test("display password error", () => {
+ test("display password error", () => {
 
-  render(<Loginform />);
+   render(<Loginform />);
 
-  var element = screen.getByRole("button");
+   var element = screen.getByRole("button");
 
   fireEvent.click(element);
 
-  const err = screen.getByText("Forgot password ?");
+   const err = screen.getByText("Forgot password ?");
 
-  expect(err).toBeInTheDocument();
+   expect(err).toBeInTheDocument();
 
-});
+ });
